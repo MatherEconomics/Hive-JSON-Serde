@@ -69,8 +69,11 @@ public class JsonStructObjectInspector extends StandardStructObjectInspector {
             if(ja.length() == 0 ) return null;
             return getStructFieldDataFromList(ja.getAsArrayList(), fieldRef );
         } else {
-            throw new Error("Data is not JSONObject  but " + data.getClass().getCanonicalName() +
-                    " with value " + data.toString()) ;
+            // in case of badly processed data, don't throw an error, just ignore the entry.
+            return null;
+            //
+            // throw new Error("Data is not JSONObject  but " + data.getClass().getCanonicalName() +
+            //        " with value " + data.toString()) ;
         } 
     }
     
