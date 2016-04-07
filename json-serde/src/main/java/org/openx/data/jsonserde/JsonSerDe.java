@@ -405,11 +405,12 @@ public class JsonSerDe implements SerDe {
     }
     
     public void onMalformedJson(String msg) throws SerDeException {
-        if(ignoreMalformedJson) {
-            LOG.warn("Ignoring malformed JSON: " + msg);
-        }  else {
-            throw new SerDeException(msg);
-        }
+        // mather update - 4/7/16 - always ignore malformed json
+        //if(ignoreMalformedJson) {
+        LOG.warn("Ignoring malformed JSON: " + msg);
+        //}  else {
+        //    throw new SerDeException(msg);
+        //}
     }
 
     @Override
